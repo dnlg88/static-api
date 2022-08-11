@@ -50,9 +50,11 @@ class FamilyStructure:
         # fill this method and update the return
         result = list(filter(lambda member: member['id'] != id, self._members))
         if len(result) == len(self._members):
-            return False
+            raise APIException('ID not found',400)
         else:
-            return True
+            member_to_delete = self.get_member(id)
+            self._members.remove(member_to_delete)
+            return self._members
 
     def get_member(self, id):
         # fill this method and update the return
