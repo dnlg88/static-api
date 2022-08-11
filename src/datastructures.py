@@ -54,9 +54,6 @@ class FamilyStructure:
         else:
             return True
 
-
-
-
     def get_member(self, id):
         # fill this method and update the return
         for x in self._members:

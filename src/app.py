@@ -47,7 +47,8 @@ def add_member():
     new_member = request.json
     jackson_family.add_member(new_member)
     return jsonify(f'{new_member["name"]} added to the family'), 200
-    
+
+#delete member 
 @app.route('/members/<int:delete_id>', methods=['DELETE'])
 def delete_member(delete_id):
     is_deleted = jackson_family.delete_member(delete_id)
