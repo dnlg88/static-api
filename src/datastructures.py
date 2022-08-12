@@ -14,20 +14,23 @@ class FamilyStructure:
 
         # example list of members
         self._members = [
-            {'name': 'John Jackson',
-              'age': 33,
-              'lucky_numbers': [7,11,33],
-              'id': 1     
+            {'id': self._generateId(),
+             'first_name': 'John',
+             'last_name': last_name,   
+             'age': 33,
+             'lucky_numbers': [7,13,22],    
             },
-            {'name': 'Jane Jackson',
+            {'id': self._generateId(),
+             'first_name': 'Jane',
+             'last_name': last_name,
               'age': 35,
-              'lucky_numbers': [8,1,10],
-              'id': 2      
+              'lucky_numbers': [10,14,3],     
             },
-            {'name': 'Jimmy Jackson',
+            {'id': self._generateId(),
+             'first_name': 'Jimmy',
+             'last_name': last_name,
               'age': 5,
-              'lucky_numbers': [5,6,9],
-              'id': 3     
+              'lucky_numbers': [1],    
             }
         ]
 
@@ -37,14 +40,11 @@ class FamilyStructure:
 
     def add_member(self, new_member):
         # fill this method and update the return
-        id_to_add = self._generateId()
-        duplicate = filter(lambda member: id_to_add == member["id"], self._members)
+        duplicate = filter(lambda member: member['id'] == member["id"], self._members)
         if not duplicate:
-            return add_member(member)
-        else:
-            new_member['id'] = id_to_add
-            self._members.append(new_member)
-            return self._members
+            new_member['id'] = self._generateId()     
+        self._members.append(new_member)
+        return self._members
 
     def delete_member(self, id):
         # fill this method and update the return
@@ -54,7 +54,8 @@ class FamilyStructure:
         else:
             member_to_delete = self.get_member(id)
             self._members.remove(member_to_delete)
-            return self._members
+            
+            return {'done': True}
 
     def get_member(self, id):
         # fill this method and update the return
