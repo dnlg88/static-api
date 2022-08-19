@@ -62,8 +62,8 @@ class FamilyStructure:
         for x in self._members:
             if x['id'] == id:
                 member = x
-        return member
-   
+                return member
+        return False
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
         return self._members

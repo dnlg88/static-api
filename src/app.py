@@ -36,8 +36,10 @@ def get_all_members():
 @app.route('/member/<int:member_id>', methods=['GET'])
 def get_single_member(member_id):
     single_member = jackson_family.get_member(member_id)
-    return jsonify(single_member), 200
-
+    if single_member:
+        return jsonify(single_member), 200
+    else:
+        return jsonify('Member not found'), 404
 #add member
 @app.route('/member', methods=['POST'])
 def add_member():
